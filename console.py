@@ -18,7 +18,7 @@ classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
 
 
 class HBNBCommand(cmd.Cmd):
-    """ HBNH console """
+    """ HBNB console """
     prompt = '(hbnb) '
 
     def do_EOF(self, arg):
@@ -69,6 +69,16 @@ class HBNBCommand(cmd.Cmd):
         print(instance.id)
         instance.save()
 
+    def help_create(self):
+        """ Help information for the create method """
+        print("Creates a class of any type")
+        print("[Usage]: create <className>\n")
+        print('You can also define attributes while creating an object:')
+        print('create <Class name> <param 1> <param 2> <param 3>...')
+        print('String: "<value>" => starts with a double quote')
+        print('Float: <unit>.<decimal> => contains a dot .')
+        print('Integer: <number> => default case')
+
     def do_show(self, arg):
         """Prints an instance as a string based on the class and id"""
         args = shlex.split(arg)
@@ -86,6 +96,11 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
         else:
             print("** class doesn't exist **")
+
+    def help_show(self):
+        """ Help information for the show command """
+        print("Shows an individual instance of a class")
+        print("[Usage]: show <className> <objectId>\n")
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class and id"""
@@ -105,6 +120,11 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
+    def help_destroy(self):
+        """ Help information for the destroy command """
+        print("Destroys an individual instance of a class")
+        print("[Usage]: destroy <className> <objectId>\n")
+
     def do_all(self, arg):
         """Prints string representations of instances"""
         args = shlex.split(arg)
@@ -121,6 +141,11 @@ class HBNBCommand(cmd.Cmd):
         print("[", end="")
         print(", ".join(obj_list), end="")
         print("]")
+
+    def help_all(self):
+        """ Help information for the all command """
+        print("Shows all objects, or all of a class")
+        print("[Usage]: all <className>\n")
 
     def do_update(self, arg):
         """Update an instance based on the class name, id, attribute & value"""

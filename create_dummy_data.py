@@ -41,6 +41,7 @@ GeorgeStewart = User(
     email='suhehedet@nec.tg',
     password='WSzWNUE5'
 )
+GeorgeStewart.save()
 
 # create states
 NewYork = State(id='NY', name='New York')
